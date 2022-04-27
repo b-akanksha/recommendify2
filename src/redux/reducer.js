@@ -11,8 +11,9 @@ const reducer = (state = initialState, { type, payload }) => {
     }
     case types.SET_ARTIST:
       return { ...state, topArtist: payload };
-    case types.GET_TRACKS:
-      return { ...state, trackList: [...state.trackList, ...payload] };
+    case types.GET_TRACKS: {
+      return { ...state, trackList: [...payload] };
+    }
     case types.SET_TRACKS: {
       let tempArr = state.tracks.filter((i) => i.id === payload.id);
       if (tempArr.length === 0) {
@@ -40,7 +41,13 @@ const reducer = (state = initialState, { type, payload }) => {
     case types.REMOVE_ARTIST:
       return { ...state, topArtist: {} };
     case types.CLEAR_DATA:
-      return { ...state, artistList: [], tracksList: [], genresList: [] };
+      return {
+        ...state,
+        artistList: [],
+        tracksList: [],
+        genresList: [],
+        offset: 0,
+      };
     case types.GET_IDS: {
       let tempArr = state.tracks.map((i) => i.id);
       return { ...state, trackIds: tempArr };

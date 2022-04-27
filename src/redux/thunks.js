@@ -4,11 +4,14 @@ import {
   getRecommendationService,
   getSearchResult,
 } from "./services";
-export const getSearchThunk = (query, type, offset) => {
-  return async (dispatch) => {
+export const getSearchThunk = (query, type) => {
+  return async (dispatch, getState) => {
+    const { offset } = getState().recommend;
     try {
-      const response = await getSearchResult(query, type, offset);
+      const response = await getSearchResult(query, offset);
       if (response.status === 200) {
+        console.log(response);
+
         type === "artist"
           ? dispatch(getArtists(response.data.artists.items))
           : dispatch(getTracks(response.data.tracks.items));
@@ -26,8 +29,6 @@ export const getAnalysisThunk = () => {
     const ids = getState().recommend.trackIds;
     try {
       const response = await getAnalysisService(ids);
-      console.log(response);
-
       if (response.status === 200) {
         await dispatch(analyse(response.data));
         await dispatch(getRecommendationThunk());

@@ -1,14 +1,12 @@
 import React from "react";
 import ResultItem from "./ResultItem";
 import "./result.css";
-import { useDispatch, useSelector } from "react-redux";
-import { setOffset, setOffsetBack } from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import { setOffset } from "../../redux/actions";
 
 const ResultList = ({ data, topId, onSelect, onDelete }) => {
-  const { offset } = useSelector((state) => state.recommend);
   const dispatch = useDispatch();
   const goFront = () => dispatch(setOffset());
-  const goBack = () => dispatch(setOffsetBack());
 
   return (
     <div className="result-container">
@@ -40,18 +38,9 @@ const ResultList = ({ data, topId, onSelect, onDelete }) => {
       ) : (
         <p>No data found</p>
       )}
-      <div>
-        <button
-          className={`button load-button ${offset === 10 && "disabled"}`}
-          onClick={goBack}
-          disabled={offset === 10}
-        >
-          Back
-        </button>
-        <button className="button load-button" onClick={goFront}>
-          Search more
-        </button>
-      </div>
+      <button className="button load-button" onClick={goFront}>
+        Load more
+      </button>
     </div>
   );
 };

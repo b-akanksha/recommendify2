@@ -16,7 +16,7 @@ const Form1 = () => {
   React.useEffect(() => {
     if (search !== "") {
       dispatch(clearData());
-      dispatch(getSearchThunk(search, "artist", offset));
+      dispatch(getSearchThunk(search, "artist"));
     }
   }, [dispatch, search, offset]);
 
@@ -34,7 +34,10 @@ const Form1 = () => {
       />
       {Object.keys(topArtist).length > 0 && (
         <div className="result-container result">
-          <div className="result-flex-container result-cont">
+          <div
+            className="result-flex-container result-cont"
+            style={{ height: "auto" }}
+          >
             <h1 className="div-title">Favourite Artist</h1>
             <ResultItem
               key={`${topArtist.name}-${topArtist.id}`}

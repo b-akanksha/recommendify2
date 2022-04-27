@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIds, setCurrStep } from "../../redux/actions";
+import { clearData, getIds, setCurrStep } from "../../redux/actions";
 import { getAnalysisThunk } from "../../redux/thunks";
 import Dashboard from "../Dashboard";
 import FormContainer from "../FormContainer";
@@ -15,8 +15,10 @@ const Home = ({ logout }) => {
   const next = async () => {
     switch (currStep) {
       case "Form1":
+        await dispatch(clearData());
         return dispatch(setCurrStep("Form2"));
       case "Form2":
+        await dispatch(clearData());
         return dispatch(setCurrStep("Form3"));
       case "Form3":
         await dispatch(getIds());

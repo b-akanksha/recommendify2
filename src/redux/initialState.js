@@ -5,7 +5,7 @@ const initialState = {
   tracks: [],
   genres: [],
   currStep: "Form1",
-  offset: 10,
+  offset: 0,
   analysis: {},
   trackIds: [],
   result: [],

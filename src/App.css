@@ -7,3 +7,19 @@
   justify-content: space-around;
   font-size: calc(10px + 2vmin);
 }
+.flex-grow {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  margin-top: auto;
+  font-size: 16px;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}

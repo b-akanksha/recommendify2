@@ -16,7 +16,7 @@ const Form2 = () => {
   React.useEffect(() => {
     if (search !== "") {
       dispatch(clearData());
-      dispatch(getSearchThunk(search, "track", offset));
+      dispatch(getSearchThunk(search, "tracks"));
     }
   }, [dispatch, search, offset]);
   return (
