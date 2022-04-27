@@ -17,6 +17,7 @@ export const types = {
   GET_ANALYSIS: "GET_ANALYSIS",
   GET_IDS: "GET_IDS",
   GET_RECOMMENDATION: "GET_RECOMMENDATION",
+  SET_TOKEN: "SET_TOKEN",
 };
 
 export const setCurrStep = (payload) => ({ type: types.SET_STEP, payload });
@@ -40,3 +41,4 @@ export const getRecommendation = (payload) => ({
   type: types.GET_RECOMMENDATION,
   payload,
 });
+export const setToken = (payload) => ({ type: types.SET_TOKEN, payload });

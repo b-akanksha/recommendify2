@@ -1,4 +1,11 @@
-import { analyse, getArtists, getRecommendation, getTracks } from "./actions";
+import { getAuth } from "../utils/api";
+import {
+  analyse,
+  getArtists,
+  getRecommendation,
+  getTracks,
+  setToken,
+} from "./actions";
 import {
   getAnalysisService,
   getRecommendationService,
@@ -54,6 +61,21 @@ export const getRecommendationThunk = () => {
       );
       if (response.status === 200) {
         dispatch(getRecommendation(response.data.tracks));
+      } else {
+        throw new Error(response.error.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getAuthThunk = () => {
+  return async (dispatch) => {
+    try {
+      const response = await getAuth();
+      if (response.status === 200) {
+        dispatch(setToken(response.data.access_token));
       } else {
         throw new Error(response.error.message);
       }

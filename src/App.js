@@ -2,12 +2,18 @@ import React from "react";
 import Login from "./components/Login";
 import "./App.css";
 import Home from "./components/Home";
+import { useDispatch } from "react-redux";
+import { getAuthThunk } from "./redux/thunks";
+import { setToken } from "./redux/actions";
 
 function App() {
-  const [token, setToken] = React.useState("");
+  const [token, setAuthToken] = React.useState("");
+
+  const dispatch = useDispatch();
 
   const logout = () => {
-    setToken("");
+    setAuthToken("");
+    dispatch(setToken(""));
     window.localStorage.removeItem("token");
   };
 
@@ -24,10 +30,11 @@ function App() {
 
       window.location.hash = "";
       window.localStorage.setItem("token", authToken);
+      dispatch(getAuthThunk());
     }
 
-    setToken(authToken);
-  }, []);
+    setAuthToken(authToken);
+  }, [dispatch]);
 
   return (
     <div className="App">

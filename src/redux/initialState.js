@@ -9,6 +9,7 @@ const initialState = {
   analysis: {},
   trackIds: [],
   result: [],
+  token: "",
 };
 
 export default initialState;

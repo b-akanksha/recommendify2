@@ -14,6 +14,9 @@ const reducer = (state = initialState, { type, payload }) => {
     case types.GET_TRACKS: {
       return { ...state, trackList: [...payload] };
     }
+    case types.SET_TOKEN:
+      window.localStorage.setItem("token", payload);
+      return { ...state, token: payload };
     case types.SET_TRACKS: {
       let tempArr = state.tracks.filter((i) => i.id === payload.id);
       if (tempArr.length === 0) {

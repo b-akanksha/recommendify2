@@ -21,7 +21,11 @@ const Login = () => {
           process.env.NODE_ENV === "development"
             ? process.env.REACT_APP_LOCAL_REDIRECT_URI
             : process.env.REACT_APP_PROD_REDIRECT_URI
-        }&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`}
+        }&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&state=${(
+          Math.random() + 1
+        )
+          .toString(36)
+          .substring(7)}`}
       >
         Login to Spotify
       </a>
