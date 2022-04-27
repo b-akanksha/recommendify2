@@ -25,7 +25,9 @@ const TrackList = ({
       <h1 className="div-title">{title}</h1>
       <p className="div-title">{subTitle}</p>
       {data && data.length > 0 ? (
-        <div className="result-flex-container">
+        <div
+          className={`result-flex-container ${type === "fav" && "cont-height"}`}
+        >
           {data.map((item, index) => {
             const { id, name } = item;
             return (
@@ -34,9 +36,9 @@ const TrackList = ({
                 title={name}
                 classApplied={
                   trackId[id]
-                    ? "flex-item selected-tile"
+                    ? `flex-item selected-tile ${type === "fav" && "width-set"}`
                     : tracks.length < 8
-                    ? "flex-item"
+                    ? `flex-item ${type === "fav" && "width-set"}`
                     : ""
                 }
                 img={item.album.images[0]}

@@ -1,42 +1,45 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setCurrStep } from "../../redux/actions";
-import FormContainer from "../FormContainer";
-import "./Dashboard.css";
+import { useSelector } from "react-redux";
+import "../Form1/form1.css";
 
-const Dashboard = ({ logout }) => {
-  const { currStep, topArtist, tracks } = useSelector(
-    (state) => state.recommend
-  );
-  const dispatch = useDispatch();
-
-  const next = () => {
-    switch (currStep) {
-      case "Form1":
-        return dispatch(setCurrStep("Form2"));
-      case "Form2":
-        return dispatch(setCurrStep("Form3"));
-      case "Form3":
-        return dispatch(setCurrStep("Result"));
-      default:
-        return () => {};
-    }
-  };
+const Dashboard = () => {
+  const { result, analysis } = useSelector((state) => state.recommend);
   return (
-    <div>
-      {currStep === "Form1" || currStep === "Form2" || currStep === "Form3" ? (
-        <FormContainer />
-      ) : null}
-      <div className="buttons">
-        <button className="button logout-button" onClick={logout}>
-          Logout
-        </button>
-        {((currStep === "Form1" && Object.keys(topArtist).length > 0) ||
-          (currStep === "Form2" && tracks.length > 0)) && (
-          <button className="button load-button" onClick={next}>
-            Next <div style={{ height: "10px" }} />
-          </button>
-        )}
+    <div className="form1-container">
+      <div className="result-container">
+        <h3 className="div-title">Metrics</h3>
+        <div className="result-flex-container">
+          {analysis && (
+            <table>
+              {Object.keys(analysis).map((i, index) => (
+                <tr key={`${i}-${index}`}>
+                  <td>{i}</td>
+                  <td>{analysis[i]}</td>
+                </tr>
+              ))}
+            </table>
+          )}
+        </div>
+      </div>
+      <div style={{ height: "20px" }} />
+      <div className="result-container">
+        <h3 className="div-title">Top 12 Recommendation</h3>
+        <div className="result-flex-container iframe-height">
+          {result &&
+            result.map((track) => (
+              <iframe
+                title={track.name}
+                src={`https://open.spotify.com/embed/track/${track.id}`}
+                width="250"
+                height="80"
+                key={track.id}
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+                className="flex-iframe-container"
+              />
+            ))}
+        </div>
       </div>
     </div>
   );

@@ -2,13 +2,14 @@
   background-color: white;
   border-radius: 16px;
   color: black;
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
   padding: 8px;
 }
 
 .result-flex-container {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -84,12 +85,29 @@
   cursor: pointer;
 }
 
+.cont-height {
+  height: auto;
+}
+
 .div-title {
-  line-height: 0.2;
+  line-height: 1;
 }
 p.div-title {
   font-size: 16px;
 }
 h1.div-title {
   font-size: 24px;
+}
+
+.width-set {
+  max-width: 200px;
+}
+
+.disabled {
+  background-color: gray !important;
+}
+@media screen and (max-width: 768px) {
+  .cont-height {
+    height: 200px;
+  }
 }

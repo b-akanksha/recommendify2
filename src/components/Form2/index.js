@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearData, removeTrack, setTracks } from "../../redux/actions";
 import { getSearchThunk } from "../../redux/thunks";
 import "../Form1/form1.css";
-import ResultItem from "../ResultList/ResultItem";
 import TrackList from "../TrackList";
 
 const Form2 = () => {
@@ -25,7 +24,7 @@ const Form2 = () => {
       <input
         className="input-field"
         type="text"
-        placeholder="Search for an songs"
+        placeholder="Search for songs"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
@@ -40,7 +39,7 @@ const Form2 = () => {
           type="fav"
         />
       )}
-      <div style={{ height: "10px" }} />
+      <div style={{ height: "20px" }} />
       {trackList && trackList.length > 0 && (
         <TrackList
           title="Search results"

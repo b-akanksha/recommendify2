@@ -1,5 +1,6 @@
 .form1-container {
-  width: 100vw;
+  width: 90vw;
+  margin: 16px;
 }
 
 .input-field {
@@ -15,4 +16,25 @@
 .result-cont {
   margin: 0 auto;
   height: auto;
+}
+
+.iframe-height {
+  height: 400px;
+}
+
+.flex-iframe-container {
+  flex: 30%;
+  padding: 16px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 70%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }

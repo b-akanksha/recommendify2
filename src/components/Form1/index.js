@@ -46,7 +46,7 @@ const Form1 = () => {
           </div>
         </div>
       )}
-      <div style={{ height: "10px" }} />
+      <div style={{ height: "20px" }} />
       {artistList && artistList.length > 0 && (
         <ResultList
           data={artistList}

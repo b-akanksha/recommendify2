@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./components/Login";
 import "./App.css";
-import Dashboard from "./components/Dashboard";
+import Home from "./components/Home";
 
 function App() {
   const [token, setToken] = React.useState("");
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       {!token && <Login />}
-      {token && <Dashboard logout={logout} />}
+      {token && <Home logout={logout} />}
     </div>
   );
 }
