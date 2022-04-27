@@ -21,3 +21,21 @@
   background-color: #dc2626;
   cursor: pointer;
 }
+
+.load-button {
+  border: 1px solid #f59e0b;
+  background-color: #f59e0b;
+}
+
+.load-button:hover,
+.load-button:active,
+.load-button:focus {
+  border: 1px solid #f59e0b;
+  background-color: #f59e0b;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}

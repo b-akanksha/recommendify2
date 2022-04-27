@@ -1,0 +1,18 @@
+.form1-container {
+  width: 100vw;
+}
+
+.input-field {
+  width: 50%;
+  padding: 16px;
+  font-size: 20px;
+  border-radius: 50px;
+  text-align: center;
+  outline: none;
+  margin: 16px;
+}
+
+.result-cont {
+  margin: 0 auto;
+  height: auto;
+}
