@@ -1,0 +1,38 @@
+.app-title {
+  line-height: 0.2;
+}
+
+.app-subtitle {
+  font-size: 20px;
+}
+
+.app-content-div {
+  width: 70%;
+  padding: 32px;
+  margin: 0 auto;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.button {
+  margin: 32px;
+  padding: 24px;
+  border-radius: 25px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.login-button {
+  border: 1px solid #10b981;
+  background-color: #10b981;
+}
+
+.login-button:hover,
+.login-button:active,
+.login-button:focus {
+  border: 1px solid #10b981;
+  background-color: #10b981;
+}
