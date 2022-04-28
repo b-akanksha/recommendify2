@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setOffset } from "../../redux/actions";
 import ResultItem from "../ResultList/ResultItem";
 import "../ResultList/result.css";
+import { loadMoreThunk } from "../../redux/thunks";
 
 const TrackList = ({
   data,
@@ -18,7 +18,7 @@ const TrackList = ({
     trackId[elem.id] = elem.id;
   }
   const dispatch = useDispatch();
-  const loadMore = () => dispatch(setOffset());
+  const loadMore = () => dispatch(loadMoreThunk("track"));
 
   return (
     <div className="result-container">

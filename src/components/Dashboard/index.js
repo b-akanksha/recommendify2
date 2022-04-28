@@ -6,7 +6,7 @@ const Dashboard = () => {
   const { result, analysis } = useSelector((state) => state.recommend);
   return (
     <div className="form1-container">
-      <div className="result-container">
+      {/* <div className="result-container">
         <h3 className="div-title">Metrics</h3>
         <div className="result-flex-container">
           {analysis && (
@@ -20,7 +20,7 @@ const Dashboard = () => {
             </table>
           )}
         </div>
-      </div>
+      </div> */}
       <div style={{ height: "20px" }} />
       <div className="result-container">
         <h3 className="div-title">Top 12 Recommendation</h3>

@@ -6,13 +6,19 @@ const reducer = (state = initialState, { type, payload }) => {
     case types.SET_STEP:
       return { ...state, currStep: payload };
     case types.GET_ARTISTS: {
-      const tempArr = state.artistList;
-      return { ...state, artistList: [...tempArr.concat(payload)] };
+      const tempArr = payload.items
+        ? [...state.artistList, ...payload.items]
+        : [...state.artistList];
+      return { ...state, artistList: tempArr, next: payload.next };
     }
     case types.SET_ARTIST:
       return { ...state, topArtist: payload };
     case types.GET_TRACKS: {
-      return { ...state, trackList: [...payload] };
+      const tempArr = payload.items
+        ? [...state.trackList, ...payload.items]
+        : [...state.trackList];
+
+      return { ...state, trackList: tempArr, next: payload.next };
     }
     case types.SET_TOKEN:
       window.localStorage.setItem("token", payload);
@@ -37,17 +43,13 @@ const reducer = (state = initialState, { type, payload }) => {
       let tempArr = state.genres.filter((i) => i !== payload);
       return { ...state, genres: tempArr };
     }
-    case types.SET_OFFSET:
-      return { ...state, offset: state.offset + 10 };
-    case types.SET_OFFSET_BACK:
-      return { ...state, offset: state.offset - 10 };
     case types.REMOVE_ARTIST:
       return { ...state, topArtist: {} };
     case types.CLEAR_DATA:
       return {
         ...state,
         artistList: [],
-        tracksList: [],
+        trackList: [],
         genresList: [],
         offset: 0,
       };

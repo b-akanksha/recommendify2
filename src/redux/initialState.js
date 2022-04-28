@@ -5,11 +5,11 @@ const initialState = {
   tracks: [],
   genres: [],
   currStep: "Form1",
-  offset: 0,
   analysis: {},
   trackIds: [],
   result: [],
   token: "",
+  next: "",
 };
 
 export default initialState;

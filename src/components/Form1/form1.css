@@ -18,8 +18,8 @@
   height: auto;
 }
 
-.iframe-height {
-  height: 400px;
+div.iframe-height {
+  height: 450px;
 }
 
 .flex-iframe-container {

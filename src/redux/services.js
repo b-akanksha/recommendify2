@@ -1,15 +1,9 @@
 import * as api from "../utils/api";
 
-export const getSearchResult = async (query, offset) => {
-  if (offset === 0) {
-    return api.get(
-      `/search?q=${query}&type=artist,album,track&include_external=audio&limit=10`
-    );
-  } else {
-    return api.get(
-      `/search?q=${query}&type=artist,album,track&include_external=audio&limit=10&offset=${offset}`
-    );
-  }
+export const getSearchResult = async (query) => {
+  return api.get(
+    `/search?q=${query}&type=artist,album,track&include_external=audio&limit=10`
+  );
 };
 
 export const getAnalysisService = async (ids) => {
@@ -35,4 +29,8 @@ export const getRecommendationService = async (
       data.speechiness
     }&target_tempo=${data.tempo}&target_valence=${data.valence}`
   );
+};
+
+export const loadMoreService = async (url) => {
+  return api.getWithoutURL(url);
 };

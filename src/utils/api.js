@@ -7,6 +7,11 @@ export const get = async (url, params) => {
   return axios.get(`https://api.spotify.com/v1${url}`, params);
 };
 
+export const getWithoutURL = async (url, params) => {
+  setAuthHeader();
+  return axios.get(url, params);
+};
+
 export const getAuth = async () => {
   return axios({
     url: "https://accounts.spotify.com/api/token",

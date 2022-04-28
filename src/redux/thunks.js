@@ -10,17 +10,27 @@ import {
   getAnalysisService,
   getRecommendationService,
   getSearchResult,
+  loadMoreService,
 } from "./services";
 
 export const getSearchThunk = (query, type) => {
-  return async (dispatch, getState) => {
-    const { offset } = getState().recommend;
+  return async (dispatch) => {
     try {
-      const response = await getSearchResult(query, offset);
+      const response = await getSearchResult(query);
       if (response.status === 200) {
         type === "artist"
-          ? dispatch(getArtists(response.data.artists.items))
-          : dispatch(getTracks(response.data.tracks.items));
+          ? dispatch(
+              getArtists({
+                items: response.data.artists.items,
+                next: response.data.artists.next,
+              })
+            )
+          : dispatch(
+              getTracks({
+                items: response.data.tracks.items,
+                next: response.data.tracks.next,
+              })
+            );
       } else {
         throw new Error("Error occured");
       }
@@ -77,6 +87,34 @@ export const getAuthThunk = () => {
         dispatch(setToken(response.data.access_token));
       } else {
         throw new Error(response.error.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const loadMoreThunk = (type) => {
+  return async (dispatch, getState) => {
+    const { next } = getState().recommend;
+    try {
+      const response = await loadMoreService(next);
+      if (response.status === 200) {
+        type === "artist"
+          ? dispatch(
+              getArtists({
+                items: response.data.artists.items,
+                next: response.data.artists.next,
+              })
+            )
+          : dispatch(
+              getTracks({
+                items: response.data.tracks.items,
+                next: response.data.tracks.next,
+              })
+            );
+      } else {
+        throw new Error("Error occured");
       }
     } catch (error) {
       console.log(error);

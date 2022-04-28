@@ -2,11 +2,11 @@ import React from "react";
 import ResultItem from "./ResultItem";
 import "./result.css";
 import { useDispatch } from "react-redux";
-import { setOffset } from "../../redux/actions";
+import { loadMoreThunk } from "../../redux/thunks";
 
 const ResultList = ({ data, topId, onSelect, onDelete }) => {
   const dispatch = useDispatch();
-  const goFront = () => dispatch(setOffset());
+  const goFront = () => dispatch(loadMoreThunk("artist"));
 
   return (
     <div className="result-container">
