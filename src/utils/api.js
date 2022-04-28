@@ -1,5 +1,6 @@
 import axios from "axios";
 import { setAuthHeader } from "./functions";
+import { Buffer } from "buffer";
 
 export const get = async (url, params) => {
   setAuthHeader();
@@ -11,7 +12,7 @@ export const getAuth = async () => {
     url: "https://accounts.spotify.com/api/token",
     method: "POST",
     headers: {
-      "Content-Type": "applications/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded",
       Authorization:
         "Basic " +
         Buffer.from(

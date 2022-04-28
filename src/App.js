@@ -28,13 +28,15 @@ function App() {
         .find((elem) => elem.startsWith("access_token"))
         .split("=")[1];
 
+      console.log("authToken before call ", authToken);
       window.location.hash = "";
       window.localStorage.setItem("token", authToken);
       dispatch(getAuthThunk());
     }
 
+    console.log("authToken after call ", authToken);
     setAuthToken(authToken);
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="App">
