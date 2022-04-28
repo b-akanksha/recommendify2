@@ -18,8 +18,6 @@ export const getSearchThunk = (query, type) => {
     try {
       const response = await getSearchResult(query, offset);
       if (response.status === 200) {
-        console.log(response);
-
         type === "artist"
           ? dispatch(getArtists(response.data.artists.items))
           : dispatch(getTracks(response.data.tracks.items));
@@ -75,7 +73,6 @@ export const getAuthThunk = () => {
   return async (dispatch) => {
     try {
       const response = await getAuth();
-      console.log("response thunk ", response);
       if (response.status === 200) {
         dispatch(setToken(response.data.access_token));
       } else {
