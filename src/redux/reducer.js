@@ -3,6 +3,10 @@ import { types } from "./actions";
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case types.REQUEST_FAILED:
+      return { ...state, errorOpen: true, error: payload };
+    case types.CLOSE_ERROR:
+      return { ...state, errorOpen: false, error: {} };
     case types.SET_STEP:
       return { ...state, currStep: payload };
     case types.GET_ARTISTS: {

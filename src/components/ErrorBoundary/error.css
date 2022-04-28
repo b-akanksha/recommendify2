@@ -1,0 +1,15 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  flex-grow: 1;
+  fill: #dc2626 !important;
+  height: 300px !important;
+  width: 300px !important;
+  margin: 24px !important;
+}

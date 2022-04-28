@@ -4,6 +4,7 @@ import {
   getArtists,
   getRecommendation,
   getTracks,
+  requestFailed,
   setToken,
 } from "./actions";
 import {
@@ -32,10 +33,10 @@ export const getSearchThunk = (query, type) => {
               })
             );
       } else {
-        throw new Error("Error occured");
+        throw new Error(response.error);
       }
     } catch (error) {
-      console.log(error);
+      dispatch(requestFailed(error));
     }
   };
 };
@@ -49,10 +50,10 @@ export const getAnalysisThunk = () => {
         await dispatch(analyse(response.data));
         await dispatch(getRecommendationThunk());
       } else {
-        throw new Error(response.error.message);
+        throw new Error(response.error);
       }
     } catch (error) {
-      console.log(error);
+      dispatch(requestFailed(error));
     }
   };
 };
@@ -71,10 +72,10 @@ export const getRecommendationThunk = () => {
       if (response.status === 200) {
         dispatch(getRecommendation(response.data.tracks));
       } else {
-        throw new Error(response.error.message);
+        throw new Error(response.error);
       }
     } catch (error) {
-      console.log(error);
+      dispatch(requestFailed(error));
     }
   };
 };
@@ -86,10 +87,10 @@ export const getAuthThunk = () => {
       if (response.status === 200) {
         dispatch(setToken(response.data.access_token));
       } else {
-        throw new Error(response.error.message);
+        throw new Error(response.error);
       }
     } catch (error) {
-      console.log(error);
+      dispatch(requestFailed(error));
     }
   };
 };
@@ -114,10 +115,10 @@ export const loadMoreThunk = (type) => {
               })
             );
       } else {
-        throw new Error("Error occured");
+        throw new Error(response.error);
       }
     } catch (error) {
-      console.log(error);
+      dispatch(requestFailed(error));
     }
   };
 };

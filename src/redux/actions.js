@@ -16,6 +16,7 @@ export const types = {
   GET_IDS: "GET_IDS",
   GET_RECOMMENDATION: "GET_RECOMMENDATION",
   SET_TOKEN: "SET_TOKEN",
+  CLOSE_ERROR: "CLOSE_ERROR",
 };
 
 export const setCurrStep = (payload) => ({ type: types.SET_STEP, payload });
@@ -38,3 +39,8 @@ export const getRecommendation = (payload) => ({
   payload,
 });
 export const setToken = (payload) => ({ type: types.SET_TOKEN, payload });
+export const requestFailed = (payload) => ({
+  type: types.REQUEST_FAILED,
+  payload,
+});
+export const closeError = () => ({ type: types.CLOSE_ERROR });

@@ -2,13 +2,15 @@ import React from "react";
 import Login from "./components/Login";
 import "./App.css";
 import Home from "./components/Home";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAuthThunk } from "./redux/thunks";
-import { setToken } from "./redux/actions";
+import { closeError, setToken } from "./redux/actions";
+import { Alert, Snackbar } from "@mui/material";
 
 function App() {
   const [token, setAuthToken] = React.useState("");
 
+  const { errorOpen, error } = useSelector((state) => state.recommend);
   const dispatch = useDispatch();
 
   const logout = () => {
@@ -35,6 +37,8 @@ function App() {
 
     setAuthToken(authToken);
   }, []);
+
+  const handleClose = () => dispatch(closeError());
 
   return (
     <div className="App">
@@ -68,6 +72,21 @@ function App() {
           </i>
         </p>
       </footer>
+      <Snackbar
+        open={errorOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <Alert
+          onClose={handleClose}
+          severity="error"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          <b>{error.message}</b>
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

@@ -10,6 +10,8 @@ const initialState = {
   result: [],
   token: "",
   next: "",
+  errorOpen: false,
+  error: {},
 };
 
 export default initialState;
